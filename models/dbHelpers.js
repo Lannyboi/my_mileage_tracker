@@ -15,9 +15,9 @@ module.exports = {
 }
 
 async function add(car) {
-    const [id] = await db('cars').insert(car)
-
-    return id
+    return await db('cars').insert(car, ['id'])
+    // const [id] = await db('cars').insert(car)
+    // return findCar(id)
 }
 
 function findCar() {
@@ -43,10 +43,13 @@ function findFuelInfoById(id) {
 }
 
 async function addFuelInfo(fuel_info, car_id) {
-    const [id] = await db('fuel_info')
+    return await db('fuel_info')
         .where({ car_id })
-        .insert(fuel_info)
-    return findFuelInfoById(id)
+        .insert(fuel_info, ['id'])
+    // const [id] = await db('fuel_info')
+    //     .where({ car_id })
+    //     .insert(fuel_info)
+    // return findFuelInfoById(id)
 }
 
 function findCarFuelInfo(car_id) {
