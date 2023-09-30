@@ -10,7 +10,7 @@ server.use(express.json())
 server.use(cors())
 
 server.get("/", (req, res) => {
-    res.json({ message: "I'll rizz your mum"})
+    res.json({ message: "Hello, world"})
 })
 
 server.use('/api/cars', carsRouter)
