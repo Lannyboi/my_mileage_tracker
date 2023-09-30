@@ -14,10 +14,10 @@ exports.up = function(knex) {
         tbl.integer('year').notNullable()
         tbl.integer('month').notNullable()
         tbl.integer('day').notNullable()
-        tbl.integer('total_miles').notNullable()
-        tbl.integer('miles_travled_on_tank').notNullable()
-        tbl.integer('price_per_gallon').notNullable()
-        tbl.integer('total_gallons').notNullable()
+        tbl.float('total_miles').notNullable()
+        tbl.float('miles_travled_on_tank').notNullable()
+        tbl.float('price_per_gallon').notNullable()
+        tbl.float('total_gallons').notNullable()
 
         // Foreign key info to cars table
         tbl.integer('car_id')

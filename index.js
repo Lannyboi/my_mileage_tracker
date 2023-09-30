@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const express = require('express')
 const Cars = require('./models/dbHelpers')
-const e = require('express')
 
 const server = express()
 
@@ -121,6 +120,25 @@ server.get("/api/cars/:id/fuel_info", (req, res) => {
     })
     .catch(error => {
         res.status(500).json({ message: "Error retrieving fuel info" })
+    })
+})
+
+server.delete("/api/fuel_info/:id", (req, res) => {
+    const { id } = req.params
+
+    Cars.removeFuelInfo(id)
+    .then(count => {
+        if (count > 0)
+        {
+            res.status(200).json({ message: `fuel info deleted` })
+        }
+        else
+        {
+            res.status(404).json({ message: "There is no fuel info with that id" })
+        }
+    })
+    .catch(error => {
+        res.status(500).json({ message: "Error deleting fuel info" })
     })
 })
 

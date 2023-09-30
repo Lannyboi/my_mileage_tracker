@@ -9,7 +9,8 @@ module.exports = {
     findCarById,
     removeCar,
     addFuelInfo,
-    findCarFuelInfo
+    findCarFuelInfo,
+    removeFuelInfo
 }
 
 async function add(car) {
@@ -51,4 +52,10 @@ function findCarFuelInfo(car_id) {
     return db('cars')
         .join('fuel_info', "cars.id", "fuel_info.car_id")
         .where({ car_id })
+}
+
+function removeFuelInfo(id) {
+    return db('fuel_info')
+        .where({ id })
+        .del()
 }
