@@ -5,7 +5,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('users', tbl => {
         tbl.increments() // Id field
-        tbl.text('username').notNullable()
+        tbl.text('username').notNullable().unique()
         tbl.text('password').notNullable()
     })
     .createTable('cars', tbl => {
@@ -49,5 +49,5 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists('fuel_info').dropTableIfExists('cars')
+    return knex.schema.dropTableIfExists('fuel_info').dropTableIfExists('cars').dropTableIfExists('users')
 };
