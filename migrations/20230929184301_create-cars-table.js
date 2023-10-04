@@ -3,11 +3,25 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-    return knex.schema.createTable('cars', tbl => {
+    return knex.schema.createTable('users', tbl => {
+        tbl.increments() // Id field
+        tbl.text('username').notNullable()
+        tbl.text('password').notNullable()
+    })
+    .createTable('cars', tbl => {
         tbl.increments() // Id field
         tbl.integer('car_year').notNullable()
         tbl.text('make').notNullable()
         tbl.text('model').notNullable()
+
+        // Foreign key info to users table
+        tbl.integer('users_id')
+            .unsigned()
+            .notNullable()
+            .references('id')
+            .inTable('users')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
     })
     .createTable('fuel_info', tbl => {
         tbl.increments() // Id field
@@ -20,7 +34,7 @@ exports.up = function(knex) {
         tbl.float('total_gallons').notNullable()
 
         // Foreign key info to cars table
-        tbl.integer('car_id')
+        tbl.integer('cars_id')
             .unsigned()
             .notNullable()
             .references('id')
