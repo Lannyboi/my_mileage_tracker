@@ -20,8 +20,12 @@ router.post("/", (req, res) => {
         res.status(200).json(user)
     })
     .catch(error => {
-        console.log(error)
-        res.status(500).json({ message: "Could not add user" })
+        // Check the error code for a unique constraint violation
+        if (error.code === 'SQLITE_CONSTRAINT' && error.message.includes('UNIQUE constraint failed')) {
+            res.status(400).json({ message: 'Username already exists.' });
+        } else {
+            res.status(500).json({ message: 'Could not add user.' });
+        }
     })
 })
 

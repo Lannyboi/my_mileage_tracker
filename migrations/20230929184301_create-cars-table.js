@@ -15,7 +15,7 @@ exports.up = function(knex) {
         tbl.text('model').notNullable()
 
         // Foreign key info to users table
-        tbl.integer('users_id')
+        tbl.integer('user_id')
             .unsigned()
             .notNullable()
             .references('id')
@@ -34,7 +34,7 @@ exports.up = function(knex) {
         tbl.float('total_gallons').notNullable()
 
         // Foreign key info to cars table
-        tbl.integer('cars_id')
+        tbl.integer('car_id')
             .unsigned()
             .notNullable()
             .references('id')
