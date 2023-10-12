@@ -5,7 +5,7 @@
 exports.up = function(knex) {
     return knex.schema.createTable('users', tbl => {
         tbl.increments() // Id field
-        tbl.text('username').notNullable().unique()
+        tbl.text('username').notNullable()
         tbl.text('password').notNullable()
     })
     .createTable('cars', tbl => {

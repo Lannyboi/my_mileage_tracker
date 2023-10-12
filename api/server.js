@@ -27,12 +27,16 @@ server.use(session({
     cookie: cookieMiddleware
 }))
 
+server.get("/", checkIfLoggedIn, (req, res) => {
+    res.send("Hello world")
+})
+
 // Server endpoints
-// post. For logging in
+// get post. For logging in
 server.use('/api/login', loginRouter)
-// post. For creating accounts
+// get post. For creating accounts
 server.use('/api/register', registerRouter)
-// post. For logging out
+// get post. For logging out
 server.use('/api/logout', checkIfLoggedIn, logoutRouter)
 // get, post. For adding a car and getting all cars
 server.use('/api/cars', checkIfLoggedIn, carsRouter)
