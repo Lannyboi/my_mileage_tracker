@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
                     // Creates session and sends a success response
                     req.session.isLoggedIn = true;
                     req.session.user_id = newUser.id
-                    res.status(200).json(newUser);
+                    res.send({ message: "Added new user" });
                 })
                 .catch(error => {
                     return res.status(500).json({ message: "Failed to add new account" });
