@@ -19,16 +19,23 @@ const server = express()
 
 // Use all modules and middleware
 server.use(express.json())
-server.use(cors())
+const corsOptions = {
+    origin: 'http://localhost:5500',
+    credentials: true,
+};
+server.use(cors(corsOptions))
 server.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: cookieMiddleware
+    cookie: {
+        maxAge: 100000
+    }
 }))
 
-server.get("/", checkIfLoggedIn, (req, res) => {
-    console.log(req.session.user_id)
+server.get("/", (req, res) => {
+    console.log(req.headers.cookie)
+    console.log(req.session)
     res.status(200).json({ user_id: req.session.user_id })
 })
 
