@@ -28,7 +28,8 @@ server.use(session({
 }))
 
 server.get("/", checkIfLoggedIn, (req, res) => {
-    res.send("Hello world")
+    console.log(req.session.user_id)
+    res.status(200).json({ user_id: req.session.user_id })
 })
 
 // Server endpoints
