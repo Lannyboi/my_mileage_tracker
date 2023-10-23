@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const login = req.body
     const { username, password } = login
-  
+    console.log(req.body)
     dbHelpers.findUserByUsername(login.username)
     .then(user => {
         if (user && bcrypt.compareSync(login.password, user.password))

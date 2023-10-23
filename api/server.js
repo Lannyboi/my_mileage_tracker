@@ -18,9 +18,7 @@ const server = express()
 
 // Use all modules and middleware
 server.use(express.json())
-server.use(cors({
-    origin: '*',
-}));
+server.use(cors());
 server.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
@@ -31,9 +29,8 @@ server.use(session({
 }))
 
 server.get("/", (req, res) => {
-    console.log(req.headers)
-    console.log(req.session.user_id)
-    res.status(200).json({ user_id: req.session.user_id })
+    console.log(req.session)
+    res.status(200).json({ message: "Hello home page" })
 })
 
 // Server endpoints
