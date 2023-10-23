@@ -11,7 +11,6 @@ const carsRouter = require('../Routes/cars-routes')
 const fuelInfoRouter = require('../Routes/fuel_info-routes')
 
 // Middleware
-const cookieMiddleware = require('../middleware/cookie')
 const checkIfLoggedIn = require('../middleware/checkLogin')
 
 // Set up server
@@ -19,11 +18,7 @@ const server = express()
 
 // Use all modules and middleware
 server.use(express.json())
-const corsOptions = {
-    origin: 'http://localhost:5500',
-    credentials: true,
-};
-server.use(cors(corsOptions))
+server.use(cors())
 server.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
