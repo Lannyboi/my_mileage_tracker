@@ -31,7 +31,7 @@ server.use(session({
 }))
 
 server.get("/", (req, res) => {
-    console.log(req.headers)
+    console.log(req.headers.cookie)
     console.log(req.session.user_id)
     res.status(200).json({ user_id: req.session.user_id })
 })
