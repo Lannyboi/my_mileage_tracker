@@ -24,14 +24,14 @@ server.use(cors({
 server.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         maxAge: 100000
     }
 }))
 
 server.get("/", (req, res) => {
-    console.log(req.headers.cookie)
+    console.log(req.headers)
     console.log(req.session.user_id)
     res.status(200).json({ user_id: req.session.user_id })
 })
