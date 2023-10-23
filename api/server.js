@@ -23,8 +23,8 @@ server.use(cors({
 }));
 server.use(session({
     secret: process.env.COOKIE_SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
         maxAge: 100000
     }
