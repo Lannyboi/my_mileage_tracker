@@ -12,12 +12,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const login = req.body
     const { username, password } = login
-    console.log(req.body)
+
     dbHelpers.findUserByUsername(login.username)
     .then(user => {
         if (user && bcrypt.compareSync(login.password, user.password))
         {
-            req.session.isLoggedIn = true;
+            req.session.isLoggedIn = true
             req.session.user_id = user.id
             res.status(200).json({ message: `Login successful` })
         }

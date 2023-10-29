@@ -2,6 +2,7 @@
 const express = require('express')
 const cors = require('cors')
 const session = require('express-session')
+const SQLiteStore = require("connect-sqlite3")(session)
 
 // Routes
 const registerRouter = require('../Routes/register-routes')
@@ -19,18 +20,24 @@ const server = express()
 // Use all modules and middleware
 server.use(express.json())
 server.use(cors());
+
+// set up session
+const sessionStore = new SQLiteStore({
+    db: "/data/cars.sqlite3",
+    concurrentDB: true
+})
+
 server.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: {
-        maxAge: 100000
-    }
+    store: sessionStore,
+    domain: "localhost"
 }))
 
 server.get("/", (req, res) => {
-    console.log(req.session)
-    res.status(200).json({ message: "Hello home page" })
+    console.log(req.session.user_id)
+    res.status(200).json({ user_id: req.session.user_id })
 })
 
 // Server endpoints

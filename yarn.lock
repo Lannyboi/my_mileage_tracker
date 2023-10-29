@@ -252,6 +252,13 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
+connect-sqlite3@^0.9.13:
+  version "0.9.13"
+  resolved "https://registry.yarnpkg.com/connect-sqlite3/-/connect-sqlite3-0.9.13.tgz#d6b1264afc26f5996a219217aecb740a2a57641e"
+  integrity sha512-4Dif7wjNutcAsvvl85nqApIa3gViEnN6lKOcEBEtuL9JB1DIq1bREcq0pQCc1oCpSvDGpjsFs0doftzGFc4cmQ==
+  dependencies:
+    sqlite3 "^5.0.2"
+
 console-control-strings@^1.0.0, console-control-strings@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
@@ -1370,7 +1377,7 @@ split2@^4.1.0:
   resolved "https://registry.yarnpkg.com/split2/-/split2-4.2.0.tgz#c9c5920904d148bab0b9f67145f245a86aadbfa4"
   integrity sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==
 
-sqlite3@^5.1.6:
+sqlite3@^5.0.2, sqlite3@^5.1.6:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-5.1.6.tgz#1d4fbc90fe4fbd51e952e0a90fd8f6c2b9098e97"
   integrity sha512-olYkWoKFVNSSSQNvxVUfjiVbz3YtBwTJj+mfV5zpHmqW3sELx2Cf4QCdirMelhM5Zh+KDVaKgQHqCxrqiWHybw==
